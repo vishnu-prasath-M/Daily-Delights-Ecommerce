@@ -38,26 +38,26 @@ useEffect(() => {
         const fetchProducts = async () => {
           try {
             // Fetch all products
-            const allRes = await axios.get('http://localhost:5000/products');
+            const allRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/products');
             setAllProducts(allRes.data);
     
             // Fetch categorized products
-            const fruitsRes = await axios.get('http://localhost:5000/category/Fruits');
+            const fruitsRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Fruits');
             setFruits(fruitsRes.data);
     
-            const vegetablesRes = await axios.get('http://localhost:5000/category/Vegetables');
+            const vegetablesRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Vegetables');
             setVegetables(vegetablesRes.data);
     
-            const snacksRes = await axios.get('http://localhost:5000/category/Snacks');
+            const snacksRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Snacks');
             setSnacks(snacksRes.data);
 
-            const juiceRes = await axios.get('http://localhost:5000/category/Juice');
+            const juiceRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Juice');
             setJuice(juiceRes.data);
 
-            const chocolateRes = await axios.get('http://localhost:5000/category/Chocolate');
+            const chocolateRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Chocolate');
             setChocolate(chocolateRes.data);
 
-            const stationaryRes = await axios.get('http://localhost:5000/category/Stationary');
+            const stationaryRes = await axios.get('https://daily-delights-ecommerce1.onrender.com/category/Stationary');
             setStationary(stationaryRes.data);
 
           } catch (error) {
