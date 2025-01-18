@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+/* body{
+   font-family:Georgia, 'Times New Roman', Times, serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+} */
+
+/* .bg-fruit {
+  background-image: url('../src/assets/images/frt.jpg');
+  background-size: cover;
+  background-position: center;
+} */
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; 
+}
+.order-placed {
+    animation: fade-in-out 3s ease-in-out;
+  }
+  
+  @keyframes fade-in-out {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
