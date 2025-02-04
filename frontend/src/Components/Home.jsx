@@ -79,7 +79,7 @@ function Home() {
     return (
         <div className='overflow-x-hidden'>
             {/* ad section */}
-            <div className="mt-28 flex md:flex-col md:items-center xl:flex-row gap-6 max-sm:flex-col mx-10 justify-center max-sm:mx-5 max-sm:items-center">
+            <div className="mt-28 flex md:flex-col md:items-center xl:flex-row xl:gap-7 xl:items-center gap-6 max-sm:flex-col mx-10 justify-center max-sm:mx-5 max-sm:items-center">
                 {/* first box */}
                 <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-md h-[570px] w-[750px] p-2 max-sm:w-[350px] max-sm:h-[300px] ">
                     <div className='flex gap-10 items-center justify-center ml-20 max-sm:gap-2 max-sm:ml-5'>
@@ -87,7 +87,7 @@ function Home() {
                         <img className='w-[300px] h-[400px] ml-[100px] max-sm:w-[150px] max-sm:ml-5 max-sm:h-[200px]' src={juicebg} alt="" />
                     </div>
 
-                    <p className='absolute bottom-[80px] left-[100px] w-[290px] max-sm:w-[200px] max-sm:text-[12px] max-sm:bottom-[50%] max-sm:left-[70px] font-bold text-slate-100'>Brighten Your Day With The Sunny Flavors of our fruit Juices</p>
+                    <p className='absolute bottom-[80px] left-[100px] xl:bottom-[80px] xl:left-[200px] w-[290px] max-sm:w-[200px] max-sm:text-[12px] max-sm:bottom-[50%] max-sm:left-[70px] font-bold text-slate-100'>Brighten Your Day With The Sunny Flavors of our fruit Juices</p>
                     <div>
                         {/* <img className='w-[50px]' src={natural} alt="" /> */}
                         <h1 className='font-bold  text-yellow-400 absolute top-[130px] left-[300px] text-[28px] max-sm:text-[15px] max-sm:top-[120px] max-sm:left-[150px]'>100% Natural</h1>
@@ -110,7 +110,7 @@ function Home() {
                         <div className='flex flex-col'>
                             <h1 className='font-bold text-[30px] max-sm:text-[25px] max-sm:-ml-20'>30% OFF</h1>
                             <hr className='border-t-2 border-black mt-5 w-[130px] max-sm:-ml-20' />
-                            <p className='absolute xl:right-[140px] xl:top-[180px] max-sm:top-[490px] max-sm:right-[90px] md:top-[767px] md: right-[475px]'>SALE</p>
+                            <p className='absolute xl:right-[110px] xl:top-[180px] max-sm:top-[490px] max-sm:right-[87px] md:top-[767px] md: right-[475px]'>SALE</p>
                             <div className='mt-7 text-[30px] font-semibold ml-5'>
                                 <h1 >Fruits &</h1>
                                 <h2>Vegetables</h2>
@@ -133,7 +133,7 @@ function Home() {
                         <div className='flex flex-col'>
                             <h1 className='font-bold text-[30px] max-sm:text-[25px] max-sm:-ml-16'>28% OFF</h1>
                             <hr className='border-t-2 border-black mt-5 w-[130px] max-sm:-ml-16' />
-                            <p className='absolute xl:right-[150px] xl:top-[455px] max-sm:top-[799px] max-sm:right-[90px] md:top-[760px] md: right-[70px]'>SALE</p>
+                            <p className='absolute xl:right-[120px] xl:top-[455px] max-sm:top-[799px] max-sm:right-[90px] md:top-[760px] md: right-[70px]'>SALE</p>
                             <div className='mt-7 text-[30px] font-semibold ml-5'>
                                 <h1 >Candy &</h1>
                                 <h2>Chocolates</h2>
