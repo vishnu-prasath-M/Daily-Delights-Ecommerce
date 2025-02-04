@@ -110,10 +110,10 @@ function Navi() {
   return (
     <div>
       {/* navbar */}
-      <nav className="bg-slate-100 flex items-center justify-between py-2.5 max-sm:flex-col shadow-md fixed top-0 z-20 w-[100%]">
+      <nav className="bg-slate-100 flex lg:flex-row xl:flex-row items-center justify-between py-2.5 max-sm:flex-col md:flex-col shadow-md fixed top-0 z-20 w-[100%]">
         <img className="w-[250px] ml-3" src={logo} alt="" />
-        <div className="flex justify-around items-center gap-10 max-sm:gap-0">
-          <div className="bg-white border shadow-lg w-[500px] flex items-center p-2 rounded-3xl mr-10 max-sm:w-[250px]">
+        <div className="flex justify-around items-center gap-10 max-sm:gap-0 md:gap-0">
+          <div className="bg-white border shadow-lg w-[500px] flex items-center p-2 rounded-3xl mr-7 max-sm:w-[250px]">
             <select name="category" id="cat" className="bg-transparent px-2 outline-none text-gray-400 max-sm:w-28 max-sm:text-sm">
               <option value="All categories">All categories</option>
               <option value="Groceries">Groceries</option>
@@ -125,7 +125,7 @@ function Navi() {
             <img onClick={handleSearch} className="w-5 mr-3 opacity-35 cursor-pointer max-sm:w-4" src={searchi} alt="" />
           </div>
           <div className="flex">
-            <ul className="flex mr-28 gap-10 max-sm:hidden">
+            <ul className="flex mr-28 gap-10 max-sm:hidden md:hidden xl:flex lg:flex">
               <li className="cursor-pointer flex gap-1 hover:bg-gray-300 rounded-2xl p-2"><Link to="/">Home </Link><Link to="/"><img className="w-6" src={home} alt="home" /></Link></li>
               <li className="cursor-pointer flex items-center hover:bg-gray-300 rounded-2xl p-2"><Link to="/products">Products</Link><Link to="/products"><img className="w-6" src={product} alt="pro" /></Link></li>
               <li className="cursor-pointer flex items-center hover:bg-gray-300 rounded-2xl p-2"><Link to="/cart">Cart </Link><Link to="/cart"><img className="w-6" src={basket} alt="bas" /></Link></li>
@@ -134,7 +134,7 @@ function Navi() {
           {/* profile */}
           <div>
             <button onClick={toggleProfile} className="focus:outline-none">
-              <img className="w-10 relative top-1.5 right-2 cursor-pointer max-sm:hidden" src={prof} alt="img" />
+              <img className="w-10 relative top-1.5 right-2 cursor-pointer max-sm:hidden md:hidden md:w-16 xl:flex xl:w-10" src={prof} alt="img" />
             </button>
           </div>
           {isProfileOpen && (
@@ -164,15 +164,15 @@ function Navi() {
               </button>
             </div>
           )}
-          <div className="md:hidden ">
+          <div className=" lg:hidden xl:hidden">
             <button onClick={toggleProfile} className="focus:outline-none flex">
-              <img className="w-6 mr-2 cursor-pointer " src={prof} alt="img" />
+              <img className="w-7 relative top-0.5 right-3 cursor-pointer " src={prof} alt="img" />
             </button>
           </div>
 
           {/* menu */}
-          <div className="md:hidden">
-            <img onClick={toggleSidenav} className="w-5 absolute top-[67px] right-3 cursor-pointer" src={menu} alt="" />
+          <div className="lg:hidden xl:hidden">
+            <img onClick={toggleSidenav} className="w-5 absolute top-[67px] right-3 cursor-pointer md:top-[65px] md:right-[15%] md:w-6" src={menu} alt="" />
           </div>
 
           {/* sidenav */}

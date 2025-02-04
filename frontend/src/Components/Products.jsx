@@ -128,39 +128,39 @@ useEffect(() => {
     return (
         
         <div className="container mx-auto my-8 mt-28 ">
-        <h1 id="all-products" className="text-3xl font-bold mb-4 ml-[550px] max-sm:ml-5 max-sm:text-[18px]">All Products</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="all-products" className="text-3xl font-bold mb-4 ml-[550px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">All Products</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
         {filteredProducts.map(renderProduct)}
         </div>
   
-        <h1 id="fruits" className="text-3xl font-bold mt-8 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Fruits</h1>
-        <div  className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="fruits" className="text-3xl font-bold mt-8 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Fruits</h1>
+        <div  className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {fruits.map(renderProduct)}
         </div>
   
-        <h1 id="vegetables" className="text-3xl font-bold mt-8 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Vegetables</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="vegetables" className="text-3xl font-bold mt-8 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Vegetables</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {vegetables.map(renderProduct)}
         </div>
   
-        <h1 id="snacks" className="text-3xl font-bold mt-10 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Snacks</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="snacks" className="text-3xl font-bold mt-10 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Snacks</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {snacks.map(renderProduct)}
         </div>
 
-        <h1 id="juice" className="text-3xl font-bold mt-10 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Juice</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="juice" className="text-3xl font-bold mt-10 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Juice</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {juice.map(renderProduct)}
         </div>
 
-        <h1 id="chocolate" className="text-3xl font-bold mt-10 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Chocolates</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="chocolate" className="text-3xl font-bold mt-10 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Chocolates</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {chocolate.map(renderProduct)}
         </div>
 
         
-        <h1 id="stationary" className="text-3xl font-bold mt-10 mb-4 ml-[600px] max-sm:ml-5 max-sm:text-[18px]">Stationary</h1>
-        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3">
+        <h1 id="stationary" className="text-3xl font-bold mt-10 mb-4 ml-[600px] md:ml-[100px] max-sm:ml-5 max-sm:text-[18px]">Stationary</h1>
+        <div className="grid grid-cols-5 gap-4 max-sm:grid-cols-2 max-sm:gap-3 md:grid-cols-3">
           {stationary.map(renderProduct)}
         </div>
 

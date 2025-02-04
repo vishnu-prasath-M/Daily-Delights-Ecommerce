@@ -58,7 +58,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
   };
 
   return (
-    <div className="container mx-auto p-6 flex flex-col justify-center items-center mt-20 max-sm:mt-[100px] max-sm:text-sm">
+    <div className="container mx-auto p-6 flex flex-col justify-center items-center mt-20 max-sm:mt-[100px] md:mt-[100px] max-sm:text-sm">
       <div>
         <h2 className="text-2xl font-bold mb-4 max-sm:text-[20px]">Your Cart</h2>
       </div>

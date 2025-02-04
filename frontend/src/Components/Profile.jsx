@@ -37,7 +37,7 @@ function Profile() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-20 max-sm:mt-[150px]">
+    <div className="flex flex-col justify-center items-center mt-20 max-sm:mt-[150px] md:mt-[180px]">
       {/* Profile Picture in Rounded Container */}
       <div className="w-[200px] h-[200px] max-sm:w-[100px] max-sm:h-[100px] rounded-full overflow-hidden border-4 border-gray-300 mb-4">
         <img
