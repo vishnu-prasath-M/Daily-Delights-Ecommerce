@@ -57,9 +57,18 @@ const categories = [
     { name: 'Chocolates', bgImage: choc, path: '/products#chocolates' },
     { name: 'Fashions', bgImage: fashn, path: '/products#fashions' },
 ];
-function Home() {
+function Home({ addToCart }) {
 
     const navigate = useNavigate();
+
+    const handlebuynowclick = () => {
+        navigate('/products')
+    };
+
+    // const handlevegclick = ()=>
+    // {
+    //     navigate('/products')
+    // }
 
 
 
@@ -92,7 +101,7 @@ function Home() {
                         {/* <img className='w-[50px]' src={natural} alt="" /> */}
                         <h1 className='font-bold  text-yellow-400 absolute top-[130px] left-[300px] text-[28px] max-sm:text-[15px] max-sm:top-[120px] max-sm:left-[150px]'>100% Natural</h1>
                     </div>
-                    <div className="flex items-center gap-2 w-[120px] bg-transparent border border-black rounded-lg px-2 py-1 hover:bg-black hover:text-white hover:scale-110 transition mt-20 ml-[300px] max-sm:ml-[100px] max-sm:mt-[50px] max-sm:text-sm">
+                    <div onClick={handlebuynowclick} className="flex items-center gap-2 w-[120px] bg-transparent border border-black rounded-lg px-2 py-1 hover:bg-black hover:text-white hover:scale-110 transition mt-20 ml-[300px] max-sm:ml-[100px] max-sm:mt-[50px] max-sm:text-sm">
                         <button className=''>Shop Now </button><FaCartShopping />
 
                     </div>
@@ -115,7 +124,7 @@ function Home() {
                                 <h1 >Fruits &</h1>
                                 <h2>Vegetables</h2>
                             </div>
-                            <div className='flex w-[160px] max-sm:w-[150px] max-sm:text-sm mt-5 bg-transparent border px-1.5 py-1 rounded-md hover:scale-95 transition'>
+                            <div onClick={handlebuynowclick} className='flex w-[160px] max-sm:w-[150px] max-sm:text-sm mt-5 bg-transparent border px-1.5 py-1 rounded-md hover:scale-95 transition'>
                                 <button>Shop Collections </button>
                                 <img className='w-[25px]' src={shop} alt="" />
                             </div>
@@ -138,7 +147,7 @@ function Home() {
                                 <h1 >Candy &</h1>
                                 <h2>Chocolates</h2>
                             </div>
-                            <div className='flex w-[160px] max-sm:w-[150px] max-sm:text-sm mt-5 bg-transparent border px-1.5 py-1 rounded-md hover:scale-95 transition'>
+                            <div onClick={handlebuynowclick} className='flex w-[160px] max-sm:w-[150px] max-sm:text-sm mt-5 bg-transparent border px-1.5 py-1 rounded-md hover:scale-95 transition'>
                                 <button>Shop Collections </button>
                                 <img className='w-[25px]' src={shop} alt="" />
                             </div>
@@ -185,90 +194,105 @@ function Home() {
             <div className='mx-10 mb-20 max-sm:mx-5'>
                 <h1 className='text-2xl font-bold mt-20 max-sm:text-lg max-sm:mx-5'>Best Selling Products</h1>
                 <div className='flex ml-10 space-x-5 justify-between w-full overflow-x-auto whitespace-nowrap  scrollbar-hide py-4'>
-                    <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
-                        
-                        <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={chips} alt="" />
-                        <h1 className='font-semibold ml-5 mt-5'>Potato Chips</h1>
-                        <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
-                            <p>⭐4.1</p>
-                            <p>₹50</p>
-                        </div>
-                        <div className='flex justify-between gap-5 mt-5 items-center'>
-                            <div className='flex gap-2'>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
-                                <p>1</p>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
+                        <div className='flex ml-10 space-x-5 justify-between w-full overflow-x-auto whitespace-nowrap scrollbar-hide py-4'>
+                            {/* Product 1 */}
+                            <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
+                                <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={chips} alt="Potato Chips" />
+                                <h1 className='font-semibold ml-5 mt-5'>Potato Chips</h1>
+                                <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
+                                    <p>⭐4.1</p>
+                                    <p>₹50</p>
+                                </div>
+                                <div className='flex justify-between gap-5 mt-5 items-center'>
+                                    <div className='flex gap-2'>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
+                                        <p>1</p>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
+                                    </div>
+                                    <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
+                                        <button onClick={() => addToCart({ _id: 1, name: 'Potato Chips', price: 50, imageUrl: chips, quantity: 1 })}>
+                                            Add to cart
+                                        </button>
+                                        <img className='w-[25px] h-[20px] max-sm:w-[20px] max-sm:h-[20px] md:w-[20px] md:h-[20px]' src={buys} alt="cart" />
+                                    </div>
+                                </div>
                             </div>
-                            <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
-                                <button>Add to cart</button>
-                                <img className='w-[25px] h-[20px] max-sm:w-[20px] max-sm:h-[20px] md:w-[20px] md:h-[20px]' src={buys} alt="" />
+                             {/* Product 2 */}
+                            <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
+                                <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={banan} alt="" />
+                                <h1 className='font-semibold ml-5 mt-5'>Banana</h1>
+                                <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
+                                    <p>⭐4.1</p>
+                                    <p>₹50</p>
+                                </div>
+                                <div className='flex justify-between gap-5 mt-5 items-center'>
+                                    <div className='flex gap-2'>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
+                                        <p>1</p>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
+                                    </div>
+                                    <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
+                                        <button onClick={() => addToCart({ _id: 1, name: 'Banana', price: 50, imageUrl: banan, quantity: 1 })}>
+                                            Add to cart</button>
+                                        <img className='w=[25px] h-[20px]' src={buys} alt="" />
+                                    </div>
+
+                                </div>
                             </div>
 
-                        </div>
-                    </div>
+                             {/* Product 3 */}
+                            <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
+                                <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={dairy} alt="" />
+                                <h1 className='font-semibold ml-5 mt-5'>Daily Milk Pack</h1>
+                                <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
+                                    <p>⭐4.1</p>
+                                    <p>₹90</p>
+                                </div>
+                                <div className='flex justify-between gap-5 mt-5 items-center'>
+                                    <div className='flex gap-2'>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
+                                        <p>1</p>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
+                                    </div>
+                                    <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
+                                        <button onClick={() => addToCart({ _id: 1, name: 'Daily Milk Pack', price: 90, imageUrl: dairy, quantity: 1 })}>Add to cart</button>
+                                        <img className='w=[25px] h-[20px]' src={buys} alt="" />
+                                    </div>
 
-                    <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
-                        <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={banan} alt="" />
-                        <h1 className='font-semibold ml-5 mt-5'>Banana</h1>
-                        <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
-                            <p>⭐4.1</p>
-                            <p>₹50</p>
-                        </div>
-                        <div className='flex justify-between gap-5 mt-5 items-center'>
-                            <div className='flex gap-2'>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
-                                <p>1</p>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
-                            </div>
-                            <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
-                                <button>Add to cart</button>
-                                <img className='w=[25px] h-[20px]' src={buys} alt="" />
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
-                        <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={dairy} alt="" />
-                        <h1 className='font-semibold ml-5 mt-5'>Daily Milk Pack</h1>
-                        <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
-                            <p>⭐4.1</p>
-                            <p>₹50</p>
-                        </div>
-                        <div className='flex justify-between gap-5 mt-5 items-center'>
-                            <div className='flex gap-2'>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
-                                <p>1</p>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
-                            </div>
-                            <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
-                                <button>Add to cart</button>
-                                <img className='w=[25px] h-[20px]' src={buys} alt="" />
+                                </div>
                             </div>
 
-                        </div>
-                    </div>
+                             {/* Product 4 */}
+                            <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
+                                <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={juuice} alt="" />
+                                <h1 className='font-semibold ml-5 mt-5'>Apple Juice</h1>
+                                <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
+                                    <p>⭐4.1</p>
+                                    <p>₹35</p>
+                                </div>
+                                <div className='flex justify-between gap-5 mt-5 items-center'>
+                                    <div className='flex gap-2'>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
+                                        <p>1</p>
+                                        <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
+                                    </div>
+                                    <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
+                                        <button onClick={() => addToCart({ _id: 1, name: 'Apple Juice', price: 35, imageUrl: juuice, quantity: 1 })}>Add to cart</button>
+                                        <img className='w=[25px] h-[20px]' src={buys} alt="" />
+                                    </div>
 
-                    <div className='flex flex-col shadow-xl p-3 w-[250px] rounded-lg mt-5 max-sm:h-[280px]'>
-                        <img className='w-[100%] h-[180px] max-sm:h-[120px]' src={juuice} alt="" />
-                        <h1 className='font-semibold ml-5 mt-5'>Apple Juice</h1>
-                        <div className='flex flex-col justify-center ml-5 max-sm:flex-row max-sm:ml-0 max-sm:justify-evenly'>
-                            <p>⭐4.1</p>
-                            <p>₹50</p>
-                        </div>
-                        <div className='flex justify-between gap-5 mt-5 items-center'>
-                            <div className='flex gap-2'>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>+</button>
-                                <p>1</p>
-                                <button className='bg-gray-300 px-1 rounded-md py-0.5'>-</button>
-                            </div>
-                            <div className='flex gap-1 bg-green-300 items-center px-2 py-1 rounded-md hover:scale-95 max-sm:text-sm max-sm:w-[110px] md:w-[130px]'>
-                                <button>Add to cart</button>
-                                <img className='w=[25px] h-[20px]' src={buys} alt="" />
+                                </div>
                             </div>
 
+
                         </div>
-                    </div>
+                    
+
+
+
+
+
+
                 </div>
             </div>
 
@@ -355,35 +379,35 @@ function Home() {
 
                     </div>
                     <div className='flex max-sm:gap-1 md:-ml-20'>
-                    <div className='flex flex-col gap-2 mt-5 ml-[200px] max-sm:ml-0'>
-                        <p className='font-bold text-white'>About</p>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>About Us </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Contact Us </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>FAQ </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Privacy Policy </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Terms & Conditions </p></a>
+                        <div className='flex flex-col gap-2 mt-5 ml-[200px] max-sm:ml-0'>
+                            <p className='font-bold text-white'>About</p>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>About Us </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Contact Us </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>FAQ </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Privacy Policy </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Terms & Conditions </p></a>
+                        </div>
+
+                        <div className='flex flex-col gap-2 mt-5 ml-[100px] max-sm:ml-5'>
+                            <p className='font-bold text-white'>Deals</p>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Gift Cards </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Career Opportunities </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Delivery Information </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Return & Refund Policy </p></a>
+                            <a href="#"><p className='text-slate-400 hover:text-white'>Exclusive Deals</p></a>
+                        </div>
+
                     </div>
 
-                    <div className='flex flex-col gap-2 mt-5 ml-[100px] max-sm:ml-5'>
-                    <p className='font-bold text-white'>Deals</p>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Gift Cards </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Career Opportunities </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Delivery Information </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Return & Refund Policy </p></a>
-                        <a href="#"><p className='text-slate-400 hover:text-white'>Exclusive Deals</p></a>
-                    </div>
-
-                    </div>
-                    
                     <div className='flex flex-col gap-2 mt-5 ml-[100px] max-sm:ml-[30px]'>
-                    <p className='font-bold text-white'>Delivery</p>
+                        <p className='font-bold text-white'>Delivery</p>
                         <a href="#"><p className='text-slate-400 hover:text-white'>Secure Shopping </p></a>
                         <a href="#"><p className='text-slate-400 hover:text-white'>Global Shipping </p></a>
-                        
+
                     </div>
                 </div>
                 <div className='flex justify-center mt-10'>
-                        <h1>© 2025 DAILY DELIGHTS. All Rights Reserved</h1>
+                    <h1>© 2025 DAILY DELIGHTS. All Rights Reserved</h1>
                 </div>
 
             </div>
