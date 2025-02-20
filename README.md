@@ -7,7 +7,9 @@
 
 ## 🏠 Home Page
 *Displays featured grocery products and the latest offers.
+
 *Highlights best-selling and trending items.
+
 *Includes category-based filtering for a quick selection.
 
 
