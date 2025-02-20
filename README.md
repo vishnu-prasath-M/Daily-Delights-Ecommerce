@@ -5,30 +5,30 @@
 
 ##🔥 Key Features:
 
-🏠 Home Page
+# 🏠 Home Page
 *Displays featured grocery products and the latest offers.
 *Highlights best-selling and trending items.
 *Includes category-based filtering for a quick selection.
 
 
-##📋 Product Listing Page
+# 📋 Product Listing Page
 *Shows all available grocery products with search and filter options.
 *Users can view product details, pricing, and availability.
 *Clicking on a product navigates to its dedicated details page.
 
 
-##🔍 Search & Navigation
+# 🔍 Search & Navigation
 *A powerful search bar enables users to quickly find products.
 *Clicking on a search result navigates directly to the specific product's details.
 
 
-##🛒 Cart Page
+# 🛒 Cart Page
 *Users can add items to the cart and adjust quantities.
 *Dynamic price calculation based on selected products.
 *Items can be removed or updated before checkout.
 
 
-##📦 Orders Page
+## 📦 Orders Page
 *Displays users’ past and current orders.
 *Provides order details, including order status and total amount.
 *Helps users track their grocery shopping history.
