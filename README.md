@@ -1,4 +1,4 @@
-#🛒 Daily Delights – Online Grocery Shopping (MERN + Firebase)
+# 🛒 Daily Delights – Online Grocery Shopping (MERN + Firebase)
 
 
 **Daily Delights is a full-stack e-commerce platform designed for seamless online grocery shopping, built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Firebase authentication. The website provides users with an intuitive shopping experience, allowing them to browse products, manage their cart, place orders, and track their purchase history. The UI is fully responsive, thanks to Tailwind CSS, ensuring a smooth experience across all devices.**
