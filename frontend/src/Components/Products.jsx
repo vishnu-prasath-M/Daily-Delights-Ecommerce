@@ -105,7 +105,7 @@ const ProductList = ({ addToCart }) => {
                     >
                         Add To Cart
                     </button>
-                    <img className="w-5 h-5 max-sm:w-4 max-sm:h-4" src={cartu} alt="cart" />
+                    <img  onClick={() => handleAddToCart(product)} className="w-5 h-5 max-sm:w-4 max-sm:h-4" src={cartu} alt="cart" />
                 </div>
             </div>
         </div>
