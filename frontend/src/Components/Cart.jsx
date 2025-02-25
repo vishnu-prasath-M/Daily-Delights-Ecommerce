@@ -3,29 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import mygif from "../assets/tick2.gif";
 import buy from '../assets/icons/check-out.png';
 
-const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
+const Cart = ({ cartItems: propCartItems, removeFromCart, updateQuantity }) => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orders, setOrders] = useState(() => {
     return JSON.parse(localStorage.getItem('orders')) || [];
   });
 
-  // Sync the cartItems props with localStorage on initial mount
-  const [cartis, setCartis] = useState(() => {
-    return JSON.parse(localStorage.getItem('cartis')) || cartItems || []; // Initialize with stored data or props data
+  // Initialize cartItems from localStorage or props
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    return storedCartItems.length > 0 ? storedCartItems : propCartItems || [];
   });
 
-  useEffect(() => {
-    // Store cartItems in localStorage whenever cartItems (props) changes
-    localStorage.setItem('cartis', JSON.stringify(cartItems));
-    setCartis(cartItems); // Update state to reflect props
-  }, [cartItems]); // Only update when cartItems prop changes
+  const navigate = useNavigate();
 
+  // Sync cartItems with localStorage whenever it changes
   useEffect(() => {
-    // Store orders in localStorage whenever orders state changes
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // Sync cartItems with propCartItems if propCartItems changes
+  useEffect(() => {
+    if (propCartItems && propCartItems.length > 0) {
+      setCartItems(propCartItems);
+    }
+  }, [propCartItems]);
+
+  // Sync orders with localStorage whenever it changes
+  useEffect(() => {
     localStorage.setItem('orders', JSON.stringify(orders));
   }, [orders]);
-
-  const navigate = useNavigate();
 
   const handleOrderNow = (index) => {
     const orderedItem = cartItems[index]; // Get the selected item based on index
@@ -40,8 +47,8 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
 
     // Remove the item from the cart
     const updatedCart = cartItems.filter((_, i) => i !== index);
-    localStorage.setItem('cartis', JSON.stringify(updatedCart)); // Update localStorage
-    setCartis(updatedCart); // Update state
+    setCartItems(updatedCart); // Update state
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Update localStorage
 
     setTimeout(() => {
       setOrderPlaced(false);
@@ -53,8 +60,8 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
     const updatedCart = cartItems.map((item, i) =>
       i === index ? { ...item, quantity: newQuantity } : item
     );
-    setCartis(updatedCart); // Update state
-    localStorage.setItem('cartis', JSON.stringify(updatedCart)); // Save updated cart to localStorage
+    setCartItems(updatedCart); // Update state
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Save updated cart to localStorage
   };
 
   return (
