@@ -56,12 +56,18 @@ const Cart = ({ cartItems: propCartItems, removeFromCart, updateQuantity }) => {
     }, 3000); // Simulate order processing delay
   };
 
-  const updateQuantitis = (index, newQuantity) => {
+  const updateQuantities = (index, newQuantity) => {
     const updatedCart = cartItems.map((item, i) =>
       i === index ? { ...item, quantity: newQuantity } : item
     );
     setCartItems(updatedCart); // Update state
     localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Save updated cart to localStorage
+  };
+
+  const handleRemoveFromCart = (index) => {
+    const updatedCart = cartItems.filter((_, i) => i !== index); // Remove the item at the specified index
+    setCartItems(updatedCart); // Update state
+    localStorage.setItem('cartItems', JSON.stringify(updatedCart)); // Update localStorage
   };
 
   return (
@@ -93,7 +99,7 @@ const Cart = ({ cartItems: propCartItems, removeFromCart, updateQuantity }) => {
                 <div className="flex items-center mt-2">
                   <button
                     className="bg-gray-100 p-0.5 px-1.5 rounded cursor-pointer"
-                    onClick={() => updateQuantity(index, item.quantity - 1)}
+                    onClick={() => updateQuantities(index, item.quantity - 1)}
                     disabled={item.quantity <= 1}
                   >
                     -
@@ -101,14 +107,14 @@ const Cart = ({ cartItems: propCartItems, removeFromCart, updateQuantity }) => {
                   <span className="mx-2">{item.quantity}</span>
                   <button
                     className="bg-gray-100 p-0.5 px-1.5 rounded cursor-pointer"
-                    onClick={() => updateQuantity(index, item.quantity + 1)}
+                    onClick={() => updateQuantities(index, item.quantity + 1)}
                   >
                     +
                   </button>
                 </div>
                 <div className='flex items-center gap-4'>
                   <div className='flex bg-red-500 text-white hover:bg-red-700 px-2 py-1 mt-4 rounded w-fit h-fit justify-center items-center'>
-                    <button onClick={() => removeFromCart(index)}>
+                    <button onClick={() => handleRemoveFromCart(index)}>
                       Remove
                     </button>
                   </div>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import cartu from "../assets/icons/carts.png";
 import axios from 'axios';
-import { FaFilter } from 'react-icons/fa';
+import { FaFilter, FaTimes } from 'react-icons/fa'; // Import FaTimes for the close icon
+import '../index.css'; // Import the index.css file
 
 const ProductList = ({ addToCart }) => {
     const { search } = useLocation();
@@ -14,8 +15,8 @@ const ProductList = ({ addToCart }) => {
     const [allProducts, setAllProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [showFilter, setShowFilter] = useState(false);
-    const [priceRange, setPriceRange] = useState('');
-    const [category, setCategory] = useState('');
+    const [priceRanges, setPriceRanges] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [quantities, setQuantities] = useState({});
 
     useEffect(() => {
@@ -46,17 +47,21 @@ const ProductList = ({ addToCart }) => {
             product.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
-        if (priceRange) {
-            const maxPrice = parseInt(priceRange.split('under')[1].trim());
-            filtered = filtered.filter(product => product.price <= maxPrice);
+        if (priceRanges.length > 0) {
+            filtered = filtered.filter(product => 
+                priceRanges.some(range => {
+                    const maxPrice = parseInt(range.split('under')[1].trim());
+                    return product.price <= maxPrice;
+                })
+            );
         }
 
-        if (category) {
-            filtered = filtered.filter(product => product.category === category);
+        if (categories.length > 0) {
+            filtered = filtered.filter(product => categories.includes(product.category));
         }
 
         setFilteredProducts(filtered);
-    }, [searchQuery, priceRange, category, allProducts]);
+    }, [searchQuery, priceRanges, categories, allProducts]);
 
     const handleQuantityChange = (productId, change) => {
         setQuantities(prevQuantities => ({
@@ -115,124 +120,101 @@ const ProductList = ({ addToCart }) => {
         setShowFilter(!showFilter);
     };
 
+    const handleCloseFilter = () => {
+        setShowFilter(false); // Close the filter section
+    };
+
     const handlePriceRangeChange = (range) => {
-        if (priceRange === range) {
-            setPriceRange(''); // Deselect if the same option is clicked again
-        } else {
-            setPriceRange(range); // Select the new option
-        }
-        setShowFilter(false);
+        setPriceRanges(prevRanges =>
+            prevRanges.includes(range)
+                ? prevRanges.filter(r => r !== range)
+                : [...prevRanges, range]
+        );
     };
 
     const handleCategoryChange = (cat) => {
-        if (category === cat) {
-            setCategory(''); // Deselect if the same option is clicked again
-        } else {
-            setCategory(cat); // Select the new option
-        }
-        setShowFilter(false);
+        setCategories(prevCats =>
+            prevCats.includes(cat)
+                ? prevCats.filter(c => c !== cat)
+                : [...prevCats, cat]
+        );
     };
 
     return (
         <div className="container mx-auto my-8 mt-28 flex">
             {/* Filter Section */}
             <div className={`w-1/4 p-4 fixed left-0 h-screen overflow-y-auto bg-white shadow-lg max-sm:w-full max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:bg-white max-sm:z-50 max-sm:shadow-lg ${showFilter ? 'max-sm:block' : 'max-sm:hidden'}`}>
-                <h2 className="text-xl font-bold mb-4">Filters</h2>
+                {/* Close Button for Small Screens */}
+                <div className="flex justify-between items-center mb-4 max-sm:flex">
+                    <h2 className="text-xl font-bold">Filters</h2>
+                    <button
+                        className="sm:hidden cursor-pointer text-gray-600 hover:text-gray-800"
+                        onClick={handleCloseFilter}
+                    >
+                        <FaTimes className="w-6 h-6" /> {/* Close icon */}
+                    </button>
+                </div>
                 <div className="mb-4">
                     <h3 className="font-semibold mb-2">Price Range</h3>
                     <div className="flex flex-col">
-                        <label>
-                            <input
-                                type="radio"
-                                name="price"
-                                checked={priceRange === 'under 50'}
-                                onChange={() => handlePriceRangeChange('under 50')}
-                            /> Under 50
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="price"
-                                checked={priceRange === 'under 100'}
-                                onChange={() => handlePriceRangeChange('under 100')}
-                            /> Under 100
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="price"
-                                checked={priceRange === 'under 200'}
-                                onChange={() => handlePriceRangeChange('under 200')}
-                            /> Under 200
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="price"
-                                checked={priceRange === 'under 300'}
-                                onChange={() => handlePriceRangeChange('under 300')}
-                            /> Under 300
-                        </label>
+                        {['under 50', 'under 100', 'under 200', 'under 300'].map(range => (
+                            <label key={range} className="checkbox-wrapper-46">
+                                <input
+                                    type="checkbox"
+                                    className="inp-cbx"
+                                    checked={priceRanges.includes(range)}
+                                    onChange={() => handlePriceRangeChange(range)}
+                                />
+                                <span className="cbx">
+                                    <span>
+                                        <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span>{range}</span>
+                                </span>
+                            </label>
+                        ))}
                     </div>
                 </div>
                 <div className="mb-4">
                     <h3 className="font-semibold mb-2">Category</h3>
                     <div className="flex flex-col">
-                        <label>
-                            <input
-                                type="radio"
-                                name="category"
-                                checked={category === 'Fruits'}
-                                onChange={() => handleCategoryChange('Fruits')}
-                            /> Fruits
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="category"
-                                checked={category === 'Vegetables'}
-                                onChange={() => handleCategoryChange('Vegetables')}
-                            /> Vegetables
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="category"
-                                checked={category === 'Juice'}
-                                onChange={() => handleCategoryChange('Juice')}
-                            /> Juice
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="category"
-                                checked={category === 'Chocolate'}
-                                onChange={() => handleCategoryChange('Chocolate')}
-                            /> Chocolate
-                        </label>
-                        <label>
-                            <input
-                                type="radio"
-                                name="category"
-                                checked={category === 'Stationary'}
-                                onChange={() => handleCategoryChange('Stationary')}
-                            /> Stationary
-                        </label>
+                        {['Fruits', 'Vegetables', 'Juice', 'Chocolate', 'Stationary'].map(cat => (
+                            <label key={cat} className="checkbox-wrapper-46">
+                                <input
+                                    type="checkbox"
+                                    className="inp-cbx"
+                                    checked={categories.includes(cat)}
+                                    onChange={() => handleCategoryChange(cat)}
+                                />
+                                <span className="cbx">
+                                    <span>
+                                        <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </svg>
+                                    </span>
+                                    <span>{cat}</span>
+                                </span>
+                            </label>
+                        ))}
                     </div>
                 </div>
             </div>
 
+            {/* Vertical Line Separator */}
+            <div className="w-[2px] bg-gray-300 h-screen fixed left-1/4 ml-4 max-sm:hidden"></div>
+
             {/* Products Section */}
             <div className="w-3/4 p-4 ml-[25%] max-sm:ml-0 max-sm:w-full">
-            <div className='flex items-center mb-5 bg-gray-100 px-1.5 py-1 w-fit rounded-lg'>
-            <h2 onClick={handleFilterToggle} className='cursor-pointer'>Filters</h2>
-            <button className="sm:hidden cursor-pointer" onClick={handleFilterToggle}>
-                    <FaFilter /> 
-                    
-                </button>
-                
-            </div>
-                
+                {/* Filter Button (Visible only on small screens) */}
+                <div className='flex items-center mb-5 bg-gray-100 px-1.5 py-1 w-fit rounded-lg max-sm:flex sm:hidden'>
+                    <h2 onClick={handleFilterToggle} className='cursor-pointer'>Filters</h2>
+                    <button className="cursor-pointer" onClick={handleFilterToggle}>
+                        <FaFilter />
+                    </button>
+                </div>
+
                 <h1 id="all-products" className="text-3xl font-bold mb-4">All Products</h1>
                 <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-1 max-sm:gap-7 max-sm:mx-8">
                     {filteredProducts.map(renderProduct)}
