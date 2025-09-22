@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FaFilter, FaTimes } from 'react-icons/fa'; // Import FaTimes for the close icon
 import '../index.css'; // Import the index.css file
 
+
 const ProductList = ({ addToCart }) => {
     const { search } = useLocation();
     const searchParams = new URLSearchParams(search);
