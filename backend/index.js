@@ -29,7 +29,7 @@ const Product = mongoose.model('Product', productSchema,'products');
 // Seed database with 5 products
 const seedProducts = async () => {
   const products = [
-    { name: 'Tomato Ketchup', rating: 4.5, price: 45, imageUrl: '/assets/snacks/s (15).jpg', category: 'Snacks'},
+    { name: 'Tomato Ketchup', rating: 4.3, price: 45, imageUrl: '/assets/snacks/s (15).jpg', category: 'Snacks'},
     { name: 'Lays Classic Chips', rating: 4.9, price: 20, imageUrl: "/assets/snacks/s (7).jpg", category: 'Snacks' },
     { name: 'PopCorn', rating: 3.0, price: 100, imageUrl: "/assets/snacks/s (4).jpg", category: 'Snacks' },
     { name: 'Mayonaise', rating: 4.0, price: 90, imageUrl: "/assets/snacks/s (17).jpg", category: 'Snacks' },
