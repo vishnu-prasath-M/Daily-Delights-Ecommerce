@@ -9,11 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI,{
-    serverSelectionTimeoutMS: 10000, 
-    socketTimeoutMS: 45000,        
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.error("failed to connect"));
+
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 10000,
+  socketTimeoutMS: 45000,
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch(err => console.error("❌ MongoDB connection failed:", err.message));
 
 // Define a Product Schema
 const productSchema = new mongoose.Schema({
